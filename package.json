@@ -1,0 +1,19 @@
+{
+  "name": "MFAThesisBot",
+  "version": "0.0.0",
+  "description": "A twitter bot that randomly generates fine art wall text",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tay-solis/mfa-thesis-bot"
+  },
+  "author": "Tay J Solis",
+  "license": "MIT",
+  "dependencies": {
+  "twit": "^1.1.20",
+  "redis": "^0.12.1"
+  }
+}
