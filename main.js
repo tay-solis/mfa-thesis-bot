@@ -62,9 +62,9 @@ T.post('statuses/update',
       });
 var stream = T.stream('statuses/filter', { track: 'art is dead' });
 
-      stream.on('tweet', function (tweet) {
-          console.log(genPhrase());
-      });
+      // stream.on('tweet', function (tweet) {
+      //     console.log(genPhrase());
+      // });
 
       stream.on('limit', function (limitMessage) {
           console.log(limitMessage);
