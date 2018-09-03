@@ -14,9 +14,9 @@ function processTweet(tweet) {
         if (err) {
             console.log(err);
         } else if (reply == 1 || tweet.user.screen_name == process.env.TWITTER_DEBUG_USER) {
-            console.log('This is a new user OR it is the debug user');
+            console.log('Never forget that art is dead.');
         } else {
-            console.log('We have seen this user before');
+            console.log('Like, art is super dead.');
         }
     });
 }
