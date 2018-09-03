@@ -60,6 +60,7 @@ function genPhrase(){
 T.post('statuses/update',
       {status: genPhrase()},
       (err, data, response) => {
+        console.log("Error");
       });
 
 //Stream
