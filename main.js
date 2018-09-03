@@ -57,10 +57,12 @@ function genPhrase(){
 }
 
 //Posts tweet
-// T.post('statuses/update',
-//       {status: genPhrase()},
-//       (err, data, response) => {
-//       });
+T.post('statuses/update',
+      {status: genPhrase()},
+      (err, data, response) => {
+      });
+
+//Stream
 var stream = T.stream('statuses/filter', { track: 'art is dead' });
 
       stream.on('tweet', function (tweet) {
