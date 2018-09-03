@@ -25,7 +25,7 @@ function processTweet(tweet) {
 var stream = T.stream('statuses/filter', { track: 'art is dead' });
 
 stream.on('tweet', function (tweet) {
-    console.log(tweet.text);
+    console.log(genPhrase());
 });
 
 stream.on('limit', function (limitMessage) {
@@ -43,3 +43,34 @@ stream.on('reconnect', function (request, response, connectInterval) {
 stream.on('error', function(error) {
     console.log(error);
 });
+
+let fs = require("fs");
+
+//Generates text for mfa-thesis-bot to tweet;
+
+let subjects = fs.readFileSync("./subjects.txt").toString('utf-8');
+let prepositions = fs.readFileSync("./prepositions.txt").toString('utf-8');
+let verbs = fs.readFileSync("./verbs.txt").toString('utf-8');
+let artJargon = fs.readFileSync("./art-jargon.txt").toString('utf-8');
+
+let subjectsText = subjects.split("\n");
+let prepositionsText = prepositions.split("\n");
+let verbsText = verbs.split("\n");
+let artJargonText = artJargon.split("\n");
+
+//Removes the whitespace line put in by default by text editor
+subjectsText.pop();
+prepositionsText.pop();
+verbsText.pop();
+artJargonText.pop();
+
+//Generates a combination of a subject, a verb, and two art jargon terms connected with a preposition.
+function genPhrase(){
+  let subject = subjectsText[Math.floor(Math.random() * subjectsText.length)];
+  let verb = verbsText[Math.floor(Math.random() * verbsText.length)];
+  let preposition = prepositionsText[Math.floor(Math.random() * prepositionsText.length)];
+  let jargon1 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
+  let jargon2 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
+  let sentence = subject + " " + verb  + " " + jargon1 + " " + preposition + " " + jargon2 + ".";
+  return sentence;
+}
