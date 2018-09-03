@@ -47,11 +47,12 @@ artJargonText.pop();
 function genPhrase(){
   let subject = subjectsText[Math.floor(Math.random() * subjectsText.length)];
   let verb = verbsText[Math.floor(Math.random() * verbsText.length)];
-  let preposition = prepositionsText[Math.floor(Math.random() * prepositionsText.length)];
+  let preposition1 = prepositionsText[Math.floor(Math.random() * prepositionsText.length)];
+  let preposition2 = prepositionsText[Math.floor(Math.random() * prepositionsText.length)];
   let jargon1 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
   let jargon2 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
   let jargon3 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
-  let sentence = subject + " " + verb  + " " + jargon1 + " " + preposition + " " + jargon2 + " " + preposition + " " + jargon3 + ".";
+  let sentence = subject + " " + verb  + " " + jargon1 + " " + preposition1 + " " + jargon2 + " " + preposition2 + " " + jargon3 + ".";
   return sentence;
 }
 
