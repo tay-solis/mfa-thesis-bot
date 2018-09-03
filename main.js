@@ -20,7 +20,7 @@ function processTweet(tweet) {
         }
     });
 }
-// 
+//
 // var stream = T.stream('statuses/filter', { track: 'art is dead' });
 //
 // stream.on('tweet', function (tweet) {
@@ -80,8 +80,7 @@ function genPhrase(){
 
 //Posts tweet
 T.post('statuses/update',
-{status: genPhrase()},
-(err, data, response) => {
-    console.log(err, data, response);
-}
-)
+      {status: genPhrase()},
+      (err, data, response) => {
+        console.log(err, data, response);
+      });
