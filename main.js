@@ -20,29 +20,31 @@ function processTweet(tweet) {
         }
     });
 }
+// 
+// var stream = T.stream('statuses/filter', { track: 'art is dead' });
+//
+// stream.on('tweet', function (tweet) {
+//     console.log(genPhrase());
+// });
+//
+// stream.on('limit', function (limitMessage) {
+//     console.log(limitMessage);
+// });
+//
+// stream.on('disconnect', function (disconnectMessage) {
+//     console.log(disconnectMessage);
+// });
+//
+// stream.on('reconnect', function (request, response, connectInterval) {
+//     console.log('Reconnecting in ' + connectInterval + 'ms...');
+// })
+//
+// stream.on('error', function(error) {
+//     console.log(error);
+// });
+//
+//
 
-//Access steam with bash command  nf run node main.js
-var stream = T.stream('statuses/filter', { track: 'art is dead' });
-
-stream.on('tweet', function (tweet) {
-    console.log(genPhrase());
-});
-
-stream.on('limit', function (limitMessage) {
-    console.log(limitMessage);
-});
-
-stream.on('disconnect', function (disconnectMessage) {
-    console.log(disconnectMessage);
-});
-
-stream.on('reconnect', function (request, response, connectInterval) {
-    console.log('Reconnecting in ' + connectInterval + 'ms...');
-})
-
-stream.on('error', function(error) {
-    console.log(error);
-});
 
 let fs = require("fs");
 
@@ -71,6 +73,15 @@ function genPhrase(){
   let preposition = prepositionsText[Math.floor(Math.random() * prepositionsText.length)];
   let jargon1 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
   let jargon2 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
-  let sentence = subject + " " + verb  + " " + jargon1 + " " + preposition + " " + jargon2 + ".";
+  let jargon3 = artJargonText[Math.floor(Math.random() * artJargonText.length)];
+  let sentence = subject + " " + verb  + " " + jargon1 + " " + preposition + " " + jargon2 + " " + preposition + " " + jargon3 + ".";
   return sentence;
 }
+
+//Posts tweet
+T.post('statuses/update',
+{status: genPhrase()},
+(err, data, response) => {
+    console.log(err, data, response);
+}
+)
