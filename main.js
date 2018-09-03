@@ -60,28 +60,28 @@ function genPhrase(){
 T.post('statuses/update',
       {status: genPhrase()},
       (err, data, response) => {
-        console.log("Error");
+
       });
 
 //Stream
-// var stream = T.stream('statuses/filter', { track: 'art is dead' });
-//
-//       // stream.on('tweet', function (tweet) {
-//       //     console.log(genPhrase());
-//       // });
-//
-//       stream.on('limit', function (limitMessage) {
-//           console.log(limitMessage);
-//       });
-//
-//       stream.on('disconnect', function (disconnectMessage) {
-//           console.log(disconnectMessage);
-//       });
-//
-//       stream.on('reconnect', function (request, response, connectInterval) {
-//           console.log('Reconnecting in ' + connectInterval + 'ms...');
-//       })
-//
-//       stream.on('error', function(error) {
-//           console.log(error);
-//       });
+var stream = T.stream('statuses/filter', { track: 'art is dead' });
+
+      stream.on('tweet', function (tweet) {
+          console.log(genPhrase());
+      });
+
+      stream.on('limit', function (limitMessage) {
+          console.log(limitMessage);
+      });
+
+      stream.on('disconnect', function (disconnectMessage) {
+          console.log(disconnectMessage);
+      });
+
+      stream.on('reconnect', function (request, response, connectInterval) {
+          console.log('Reconnecting in ' + connectInterval + 'ms...');
+      })
+
+      stream.on('error', function(error) {
+          console.log(error);
+      });
